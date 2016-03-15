@@ -1,0 +1,14 @@
+mixin base
+	html(lang="en")
+	head
+		meta(charset="UTF-8")
+		title Document
+		style
+			:stylus
+			include cyt.styl
+	body
+		block
+
+mixin block-cols
+	div.block-cols-3
+
