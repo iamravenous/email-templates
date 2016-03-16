@@ -10,18 +10,71 @@ html(lang="en")
 		link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet', type='text/css')
 
 		link(href='img/favicon.ico', rel='shortcut icon')
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js")
+		style.
+			#editor {
+				width: 100%;
+				height: 500px;
+			}
+		script.
+			var helperApp = {
+				initialize: function(){
+					helperApp.forms();
+				    helperApp.editor = ace.edit("editor",'ace/mode/jade');
+			    	helperApp.editor.setTheme("ace/theme/tomorrow")
+			    	helperApp.editor.setDisplayIndentGuides(true);
+			    	helperApp.editor.getSession().setMode("ace/mode/jade")
+			    	helperApp.editor.getSession().setUseWrapMode(true);
+			    	helperApp.editor.getSession().setUseSoftTabs(false);
 
-		if env == 'development'
-			each src in sources.css
-				link(rel="stylesheet", href=src)
-			
-			script(src="http://localhost:35729/livereload.js")
+					$('textarea.result').click(function(evt){
+						$(this).select();
+					});
+				},
+				forms: function(){
+					$('form').submit(function(evt){
+						evt.preventDefault();
+						var el = $(this);
+						var action = el.attr('action')
+						var method = el.attr('method')
 
-			each src in sources.js
-				script(src=src)
-		else
-			link(rel="stylesheet", href="resources/styles.min.css")
-			script(src="resources/bundle.min.js")
-			//[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]
+						$.ajax({
+							url: action,
+							type: method,
+							data:{
+								content:helperApp.editor.getSession().getValue()
+							}
+						}).success(function(data){
+							console.log(data)
+						}).error(function(xhr){
+							app.alert.open({
+								title: 'Ocurrió un error',
+								content: xhr.responseText
+							})
+						})
+					})
+				}
+			}
+			$(document).ready(function(){
+				helperApp.initialize();
+			})
+
+
+		//
+			if env == 'development'
+				each src in sources.css
+					link(rel="stylesheet", href=src)
+				
+				script(src="http://localhost:35729/livereload.js")
+
+				each src in sources.js
+					script(src=src)
+			else
+				link(rel="stylesheet", href="resources/styles.min.css")
+				script(src="resources/bundle.min.js")
+				//[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]
 	body
-		h1 Hello.
+		form(action="/" method="POST")
+			div#editor
+			button Procesar

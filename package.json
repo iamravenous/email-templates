@@ -45,6 +45,7 @@
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "jade": "^1.11.0",
+    "juice": "^1.10.0",
     "lodash": "^3.10.1",
     "sf-jade-utils": "moustacheful/sf-jade-utils",
     "stylus": "^0.54.2",

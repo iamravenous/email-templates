@@ -22,6 +22,9 @@ module.exports = (app)->
 		next()
 
 	# Routes
+	router.get '/', (req,res)->
+		res.render('index')
+
 	router.post '/', IndexController.index
 
 
