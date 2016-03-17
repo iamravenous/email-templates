@@ -1,10 +1,31 @@
-body
-	background red
-	border 10px solid red
+$body-width = 600px
+
+table,tr,td
+	border none
+
+table.block
+	max-width $body-width
+	width 100%
+	margin 0 auto
+p
+	margin 0
+
+.col-25
+	width 25%
+.col-50
+	width 50%
+.col-75
+	width 75%
 	
-	div
-		width 100px
-		height 100px
-		margin-bottom 10px
-		&:nth-child(3)
-			background green
+table.footer
+	background black
+	color white
+	margin-top 30px
+	td
+		padding 20px
+		text-align center
+
+.image-card
+	text-align center
+	&.orange
+		background orange

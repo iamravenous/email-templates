@@ -7,5 +7,32 @@ mixin base
 		block
 
 mixin block-cols
-	div.block-cols-3
+	table.block-cols.block(cellspacing="0" cellpadding="0")
+		tr
+			block
 
+mixin col-25
+	td.col-25
+		block
+
+mixin col-50
+	td.col-50
+		block
+
+mixin footer
+	table.footer.block(cellspacing="0" cellpadding="0")
+		tr
+			td
+				block
+
+mixin col-75
+	td.col-75
+		block
+
+mixin block-image-card(title,url,img)
+	div.image-card&attributes(attributes)
+		img(src=img, alt=title)
+		a(href=url)=title
+		p 
+			block
+		a(href=url) Ver más

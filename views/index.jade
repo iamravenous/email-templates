@@ -14,9 +14,16 @@ html(lang="en")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js")
 		style.
 			#editor {
-				width: 100%;
+				width: 50%;
 				height: 500px;
+				float: left;
 			}
+
+			#result {
+				width: 50%;
+				float: left;
+			}
+
 		script.
 			var helperApp = {
 				initialize: function(){
@@ -46,12 +53,9 @@ html(lang="en")
 								content:helperApp.editor.getSession().getValue()
 							}
 						}).success(function(data){
-							console.log(data)
+							$('#result').html(data)
 						}).error(function(xhr){
-							app.alert.open({
-								title: 'Ocurrió un error',
-								content: xhr.responseText
-							})
+							console.log(xhr.responseText)
 						})
 					})
 				}
@@ -76,5 +80,21 @@ html(lang="en")
 				//[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]
 	body
 		form(action="/" method="POST")
-			div#editor
+			div#editor.
+				+block-cols
+					+col-25
+						p Olakeasee
+					+col-75
+						p Yolosaurio
+
+				+block-cols
+					+col-50
+						+block-image-card("Lorem ipsum dolor sit amet","http://google.com","http://placehold.it/300x100").orange
+							p OKAAAP
+					+col-50
+						+block-image-card("Lorem ipsum dolor sit amet","http://google.com","http://placehold.it/300x100")
+
+				+footer
+					p Lorem ipsum dolor sit amet
+			div#result
 			button Procesar
