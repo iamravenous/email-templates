@@ -13,6 +13,17 @@ html(lang="en")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js")
 		style.
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			form {
+				overflow: hidden;
+				margin-bottom: 20px;
+			}
 			#editor-wrapper {
 				width: 50%;
 				float: left;
@@ -24,6 +35,10 @@ html(lang="en")
 			#result {
 				width: 50%;
 				float: left;
+			}
+			#source textarea{
+				width: 100%;
+				height: 300px;
 			}
 
 		script.
@@ -37,7 +52,7 @@ html(lang="en")
 			    	helperApp.editor.getSession().setUseWrapMode(true);
 			    	helperApp.editor.getSession().setUseSoftTabs(false);
 
-					$('textarea.result').click(function(evt){
+					$('#source textarea').click(function(evt){
 						$(this).select();
 					});
 				},
@@ -56,6 +71,7 @@ html(lang="en")
 							}
 						}).success(function(data){
 							$('#result').html(data)
+							$('#source textarea').html(data)
 						}).error(function(xhr){
 							console.log(xhr.responseText)
 						})
@@ -95,14 +111,14 @@ html(lang="en")
 					+block-cols
 						+col-50
 							+block-image-card(
-								"Lorem ipsum dolor sit amet",
+								u.lorem(5),
 								"http://google.com",
 								"http://placehold.it/300x100"
 							).orange
 
 						+col-50
 							+block-image-card(
-								"Lorem ipsum dolor sit amet",
+								u.lorem(5),
 								"http://google.com",
 								"http://placehold.it/300x100"
 							)
@@ -110,13 +126,13 @@ html(lang="en")
 					+block-cols
 						+col-50
 							+block-image-card(
-								"Lorem ipsum dolor sit amet",
+								u.lorem(5),
 								"http://google.com",
 								"http://placehold.it/300x100"
-							) OKAAAP
+							)=u.lorem(7)
 						+col-50
 							+block-image-card(
-								"Lorem ipsum dolor sit amet",
+								u.lorem(5),
 								"http://google.com",
 								"http://placehold.it/300x100"
 							).orange
@@ -125,3 +141,6 @@ html(lang="en")
 						p Lorem ipsum dolor sit amet
 				button Procesar
 			div#result
+
+		div#source
+			textarea
