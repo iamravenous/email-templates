@@ -30,7 +30,8 @@ html(lang="en")
 			}
 			#editor {
 				width: 100%;
-				height: 500px;
+				min-height: 700px;
+				height: 90%;
 			}
 			#result {
 				width: 50%;
@@ -103,12 +104,6 @@ html(lang="en")
 					+header
 
 					+block-cols
-						+col-25
-							p Olakeasee
-						+col-75
-							p Yolosaurio
-
-					+block-cols
 						+col-50
 							+block-image-card(
 								u.lorem(5),
@@ -124,6 +119,15 @@ html(lang="en")
 							)
 
 					+block-cols
+						+col-100
+							+block-image-card(
+								u.lorem(10),
+								"http://google.com",
+								"http://placehold.it/600x200"
+							)=u.lorem(30)
+
+
+					+block-cols
 						+col-50
 							+block-image-card(
 								u.lorem(5),
@@ -136,6 +140,7 @@ html(lang="en")
 								"http://google.com",
 								"http://placehold.it/300x100"
 							).orange
+
 
 					+footer
 						p Lorem ipsum dolor sit amet

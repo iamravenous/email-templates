@@ -20,6 +20,16 @@ mixin col-50
 	td.col-50
 		.content
 			block
+mixin col-100
+	td.col-100
+		.content
+			block
+				
+mixin col-75
+	td.col-75
+		.content
+			block
+				
 mixin header
 	table.header.block(cellspacing="0" cellpadding="0")
 		tr: td: .content 
@@ -30,9 +40,6 @@ mixin footer
 		tr: td: .content
 			p Lorem ipsum dolor sit amet
 
-mixin col-75
-	td.col-75
-		block
 
 mixin block-image-card(title,url,img)
 	div.image-card&attributes(attributes)
