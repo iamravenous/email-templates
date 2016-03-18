@@ -11,6 +11,7 @@ exports.index = (req, res) ->
 	content += req.body.content
 	body = jade.render(content, {
 		filename: "#{basepath}/main.jade"
+		u: util
 	})
 
 	css = stylus('').import("#{basepath}/cyt.styl").render()

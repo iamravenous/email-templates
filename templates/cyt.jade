@@ -13,17 +13,22 @@ mixin block-cols
 
 mixin col-25
 	td.col-25
-		block
+		.content
+			block
 
 mixin col-50
 	td.col-50
-		block
+		.content
+			block
+mixin header
+	table.header.block(cellspacing="0" cellpadding="0")
+		tr: td: .content 
+			p Header
 
 mixin footer
 	table.footer.block(cellspacing="0" cellpadding="0")
-		tr
-			td
-				block
+		tr: td: .content
+			p Lorem ipsum dolor sit amet
 
 mixin col-75
 	td.col-75
@@ -35,4 +40,5 @@ mixin block-image-card(title,url,img)
 		a(href=url)=title
 		p 
 			block
-		a(href=url) Ver más
+		div.image-card-footer
+			a.more-link(href=url) Ver más

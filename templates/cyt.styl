@@ -7,25 +7,47 @@ table.block
 	max-width $body-width
 	width 100%
 	margin 0 auto
+
+img
+	max-width 100%
 p
 	margin 0
-
+.content
+	margin 5px
+	
 .col-25
 	width 25%
 .col-50
 	width 50%
+	max-width 50%
 .col-75
 	width 75%
 	
 table.footer
-	background black
-	color white
 	margin-top 30px
-	td
+	.content
+		color white
+		background black
 		padding 20px
 		text-align center
-
+table.header
+	.content
+		color white
+		background black
+		padding 20px
+		text-align right
 .image-card
 	text-align center
+	p 
+		min-height 50px
+	.image-card-footer
+		margin-top 10px
+		text-align right
+	a.more-link
+		background black
+		border 1px solid red
+	
 	&.orange
 		background orange
+		.more-link
+			background darken(orange,10%)

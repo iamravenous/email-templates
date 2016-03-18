@@ -13,12 +13,14 @@ html(lang="en")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js")
 		style.
-			#editor {
+			#editor-wrapper {
 				width: 50%;
-				height: 500px;
 				float: left;
 			}
-
+			#editor {
+				width: 100%;
+				height: 500px;
+			}
 			#result {
 				width: 50%;
 				float: left;
@@ -80,21 +82,46 @@ html(lang="en")
 				//[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]
 	body
 		form(action="/" method="POST")
-			div#editor.
-				+block-cols
-					+col-25
-						p Olakeasee
-					+col-75
-						p Yolosaurio
+			div#editor-wrapper
+				div#editor.
+					+header
 
-				+block-cols
-					+col-50
-						+block-image-card("Lorem ipsum dolor sit amet","http://google.com","http://placehold.it/300x100").orange
-							p OKAAAP
-					+col-50
-						+block-image-card("Lorem ipsum dolor sit amet","http://google.com","http://placehold.it/300x100")
+					+block-cols
+						+col-25
+							p Olakeasee
+						+col-75
+							p Yolosaurio
 
-				+footer
-					p Lorem ipsum dolor sit amet
+					+block-cols
+						+col-50
+							+block-image-card(
+								"Lorem ipsum dolor sit amet",
+								"http://google.com",
+								"http://placehold.it/300x100"
+							).orange
+
+						+col-50
+							+block-image-card(
+								"Lorem ipsum dolor sit amet",
+								"http://google.com",
+								"http://placehold.it/300x100"
+							)
+
+					+block-cols
+						+col-50
+							+block-image-card(
+								"Lorem ipsum dolor sit amet",
+								"http://google.com",
+								"http://placehold.it/300x100"
+							) OKAAAP
+						+col-50
+							+block-image-card(
+								"Lorem ipsum dolor sit amet",
+								"http://google.com",
+								"http://placehold.it/300x100"
+							).orange
+
+					+footer
+						p Lorem ipsum dolor sit amet
+				button Procesar
 			div#result
-			button Procesar
