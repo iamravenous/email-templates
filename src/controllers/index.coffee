@@ -1,23 +1,49 @@
 # Just renders index.jade
 jade = require('jade')
 util = require('sf-jade-utils')
-stylus = require('stylus')
+sass = require('node-sass')
 juice = require('juice')
+cheerio = require('cheerio')
+Inky = require('inky').Inky
 
 exports.index = (req, res) ->
-	basepath = "#{process.env.PWD}/templates"
+	basepath = "#{process.env.PWD}/templates/#{req.params.template}"
 
-	content = "include cyt.jade\n"
-	content += req.body.content
-	body = jade.render(content, {
+	$ = cheerio.load(
+		'<!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<title>Documentoeprroko</title>
+			<script src="http://localhost:35729/livereload.js"></script>
+		</head>
+			<body>
+			</body>
+		</html>'
+	)
+
+	content = "include mixins.jade\n"
+	content += "include index.jade\n"
+
+	bodyContent = jade.render(content, {
 		filename: "#{basepath}/main.jade"
 		pretty: "\t"
 		u: util
 	})
 
-	css = stylus('').import("#{basepath}/cyt.styl").render()
+	$('body').append(bodyContent)
+
+	compiledSass = sass.renderSync({
+		file: "#{basepath}/styles.sass"
+		includePaths: [
+			"node_modules/foundation-emails/scss/"
+		]
+	})
+	css = compiledSass.css.toString()
+	$('head').append("<style>#{css}</style>")
+
+	html = new Inky().releaseTheKraken($).html()
 	
-	body+="<style>#{css}</style>"
-	body = juice(body)
-	
-	res.send(body)
+	res.send(juice(html,{
+		preserveMediaQueries: true
+	}))

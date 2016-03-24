@@ -55,19 +55,8 @@ files =
 		dest:         './app'
 
 gulp.task "default", ['build:server'], ->
-
 	livereload.listen()
-	gulp.watch(files.stylus.dest+"/*").on "change", livereload.changed
-
-	gulp.watch files.partials.watch,   [ "build:templates" ]
-	gulp.watch files.stylus.watch, [ "build:css" ]
-	gulp.watch files.coffee.watch, [ "build:coffee" ]
-	gulp.watch files.images.watch, [ "build:images" ]
-	gulp.watch files.server.watch,   [ "build:server" ]
-
-	return
-
-gulp.task "serve", ['build:server'], ->
+	watch "templates/**/*", -> livereload()
 	nodemon
 		script: 'server.js'
 		ext: 'js'
@@ -75,6 +64,24 @@ gulp.task "serve", ['build:server'], ->
 		watch: [
 			'app/index.js'
 		]
+	return
+
+gulp.task "dev", ['build:server'], ->
+
+	livereload.listen({start:true})
+	gulp.watch files.server.watch,   [ "build:server" ]
+	gulp.watch "./templates/**/*", -> 
+		console.log 'wat'
+		livereload.reload()
+
+	nodemon
+		script: 'server.js'
+		ext: 'js'
+		delay: 100
+		watch: [
+			'app/index.js'
+		]
+
 	return
 
 gulp.task "debug", ['build:server'], -> 	

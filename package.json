@@ -24,7 +24,7 @@
     "gulp-csso": "^1.0.0",
     "gulp-html2js": "^0.2.0",
     "gulp-jade": "^1.0.0",
-    "gulp-livereload": "^2.1.1",
+    "gulp-livereload": "^3.8.1",
     "gulp-ng-annotate": "^1.1.0",
     "gulp-nodemon": "^2.0.4",
     "gulp-notify": "^1.5.0",
@@ -37,6 +37,7 @@
   "dependencies": {
     "bluebird": "^2.9.34",
     "body-parser": "1.0.x",
+    "cheerio": "^0.20.0",
     "coffee-script": "^1.9.3",
     "compression": "^1.5.2",
     "connect-flash": "^0.1.1",
@@ -47,6 +48,7 @@
     "jade": "^1.11.0",
     "juice": "^1.10.0",
     "lodash": "^3.10.1",
+    "node-sass": "^3.4.2",
     "sf-jade-utils": "moustacheful/sf-jade-utils",
     "stylus": "^0.54.2",
     "which": "^1.2.0"
