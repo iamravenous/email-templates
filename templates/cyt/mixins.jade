@@ -1,44 +1,14 @@
-mixin base
-	html(lang="en")
-	head
-		meta(charset="UTF-8")
-		title Document
-	body
-		block
 
-mixin block-cols
-	table.block-cols.block(cellspacing="0" cellpadding="0")
-		tr
-			block
-
-mixin col-25
-	td.col-25
-		.content
-			block
-
-mixin col-50
-	td.col-50
-		.content
-			block
-mixin col-100
-	td.col-100
-		.content
-			block
-				
-mixin col-75
-	td.col-75
-		.content
-			block
 				
 mixin header
-	table.header.block(cellspacing="0" cellpadding="0")
-		tr: td: .content 
-			p Header
+	row.collapsed
+		columns(small="12")
+			h1.text-center Email Header
 
 mixin footer
-	table.footer.block(cellspacing="0" cellpadding="0")
-		tr: td: .content
-			p Lorem ipsum dolor sit amet
+	row.collapsed.body-footer
+		columns(small="12")
+			p Footer
 
 
 mixin block-image-card(title,url,img)
@@ -48,4 +18,13 @@ mixin block-image-card(title,url,img)
 		p 
 			block
 		div.image-card-footer
-			a.more-link(href=url) Ver más
+			button.tiny.more-link(href=url) Ver más
+
+mixin block-article(title,url,img)
+	row.collapsed
+		columns(small="3")
+			img(src=img, alt=title)
+		columns(small="9")
+			p
+				block
+			button.tiny(href=url) Ver más

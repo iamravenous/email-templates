@@ -1,5 +1,39 @@
+// Variables
+$global-width: 580px
+$global-gutter: 10px
+$column-padding-bottom: 10px
 
+$body-background: #eaeaea
+$container-background: white
+$primary-color: teal
+
+$body-font-family: sans-serif
+$header-font-family: sans-serif
+
+// Foundation
 @import "foundation.scss"
+
+// Styles
+
+p,h1,h2,h3,h4,h5,h6
+	margin: 0
 
 img
 	width: 100%
+
+td.callout-inner
+	@extend th.callout-inner
+
+.body-footer
+	background: $primary-color
+	.columns
+		padding: $global-gutter !important
+	td 
+		vertical-align: middle
+
+
+.image-card
+	p
+		margin-bottom: 10px
+	.button
+		margin-bottom: 0

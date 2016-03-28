@@ -13,8 +13,9 @@ exports.index = (req, res) ->
 		'<!DOCTYPE html>
 		<html lang="en">
 		<head>
-			<meta charset="UTF-8">
-			<title>Documentoeprroko</title>
+			<title>Email</title>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<meta name="viewport" content="width=device-width"/>
 			<script src="http://localhost:35729/livereload.js"></script>
 		</head>
 			<body>
@@ -44,6 +45,4 @@ exports.index = (req, res) ->
 
 	html = new Inky().releaseTheKraken($).html()
 	
-	res.send(juice(html,{
-		preserveMediaQueries: true
-	}))
+	res.send(html)
