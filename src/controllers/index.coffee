@@ -5,6 +5,7 @@ sass = require('node-sass')
 juice = require('juice')
 cheerio = require('cheerio')
 Inky = require('inky').Inky
+minify = require('html-minifier').minify
 
 exports.index = (req, res) ->
 	basepath = "#{process.env.PWD}/templates/#{req.params.template}"
@@ -28,7 +29,6 @@ exports.index = (req, res) ->
 
 	bodyContent = jade.render(content, {
 		filename: "#{basepath}/main.jade"
-		pretty: "\t"
 		u: util
 	})
 
@@ -44,5 +44,12 @@ exports.index = (req, res) ->
 	$('head').append("<style>#{css}</style>")
 
 	html = new Inky().releaseTheKraken($).html()
-	
-	res.send(html)
+
+	inlined = juice(html,{
+		preserveMediaQueries: true
+	})
+
+	return res.send(minify(inlined,{
+		minifyCSS: true
+		collapseWhitespace: true
+	}))
