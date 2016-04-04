@@ -1,5 +1,4 @@
 express = require 'express'
-sources = require '../sources'
 middleware = require './middleware'
 IndexController = require './controllers/index'
 
@@ -16,14 +15,12 @@ module.exports = (app)->
 		router.use(express.static('dist'))
 
 	router.use (req,res,next)->
-		res.locals.sources = sources
 		res.locals.env = env
 		res.locals.base_url = process.env.BASE_URL
 		next()
 
 	# Routes
 	router.get '/:template', IndexController.index
-
 
 	router.use (req,res,next)->
 		res.status(404).render('404')

@@ -10,19 +10,6 @@ minify = require('html-minifier').minify
 exports.index = (req, res) ->
 	basepath = "#{process.env.PWD}/templates/#{req.params.template}"
 
-	$ = cheerio.load(
-		'<!DOCTYPE html>
-		<html lang="en">
-		<head>
-			<title>Email</title>
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-			<meta name="viewport" content="width=device-width"/>
-			<script src="http://localhost:35729/livereload.js"></script>
-		</head>
-			<body>
-			</body>
-		</html>'
-	)
 
 	content = "include mixins.jade\n"
 	content += "include index.jade\n"
@@ -32,7 +19,7 @@ exports.index = (req, res) ->
 		u: util
 	})
 
-	$('body').append(bodyContent)
+	$ = cheerio.load(bodyContent)
 
 	compiledSass = sass.renderSync({
 		file: "#{basepath}/styles.sass"
