@@ -1,13 +1,12 @@
 express = require 'express'
-middleware = require './middleware'
 IndexController = require './controllers/index'
 
 env = process.env.NODE_ENV or "development"
 
 module.exports = (app)->
 	router = new express.Router()
-	
-	# Middleware	
+
+	# Middleware
 	if env == "development"
 		router.use('/bower_components',express.static('bower_components'))
 		router.use(express.static('front'))
