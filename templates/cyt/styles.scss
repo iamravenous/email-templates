@@ -1,0 +1,81 @@
+@import "../base/styles.sass";
+
+// Variables
+$global-width: 580px;
+$global-gutter: 10px;
+$column-padding-bottom: 10px;
+
+$body-background: #eaeaea;
+$container-background: white;
+$primary-color: teal;
+
+$body-font-family: sans-serif;
+$header-font-family: sans-serif;
+
+
+$brand-primary: #000000;
+$brand-secondary: #F1592D;
+
+$primary-color: #ffffff;
+$secondary-color: #777777;
+
+$title-color: $brand-secondary;
+$text-color: $secondary-color;
+$link-color: darken($brand-secondary, 5%);
+
+$header-height: 90px;
+$header-bg-color: #1C1C1C;
+
+// Foundation
+@import "foundation.scss";
+
+// Styles
+
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+img {
+	width: 100%;
+}
+td.callout-inner {
+	@extend th.callout-inner;
+}
+.body-footer {
+	background: $primary-color;
+	.columns {
+		padding-left: $global-gutter !important;
+		padding-right: $global-gutter !important;
+	}
+	td {
+		vertical-align: middle;
+	}
+}
+.image-card {
+	p {
+		margin-bottom: 10px;
+	}
+	.button {
+ 		margin-bottom: 0;
+	}
+}
+.header-bar {
+	height: $header-height;
+	background: $header-bg-color;
+	.columns {
+		vertical-align: middle;
+		height: $header-height;
+	}
+	.header-title {
+		margin-bottom: 0;
+		font-size: 24px;
+		line-height: 1.1;
+		color: $primary-color;
+	}
+	.header-date {
+		margin-bottom: 0;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1.1;
+		color: $primary-color;
+	}
+}

@@ -22,7 +22,7 @@ exports.index = (req, res) ->
 	$ = cheerio.load(bodyContent)
 
 	compiledSass = sass.renderSync({
-		file: "#{basepath}/styles.sass"
+		file: "#{basepath}/styles.scss"
 		includePaths: [
 			"node_modules/foundation-emails/scss/"
 		]
