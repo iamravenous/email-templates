@@ -1,129 +1,86 @@
 extends ../base/layout.jade
 block content
-	+header
+	+header(
+		"Newsletter", 
+		"Noviembre 2015", 
+		"http://placehold.it/295x50"
+		)
+	row(style="vertical-align: middle;")
+		columns(large=12, style="vertical-align: middle;")
+			+block-card({
+				title: 'Título de la publicación',
+				url: 'http://google.com',
+				img: 'http://placehold.it/310x260',
+				btnLink: true
+				})=u.lorem(20)
+			+block-card({
+				title: 'Título de la publicación',
+				url: 'http://google.com',
+				img: 'http://placehold.it/310x260',
+				btnLink: true
+				})=u.lorem(20)
 	row
-		columns(small="12")
-			+block-image-card(
-				u.lorem(5),
-				"http://google.com",
-				"http://placehold.it/580x200"
-			)=u.lorem(10)
-
-	row
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-		columns(small="12",large="8")
-			+block-image-card(
-				u.lorem(5),
-				"http://google.com",
-				"http://placehold.it/370x120"
-			)=u.lorem(10)
-
-
-	row
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-
-	row
-		columns(small="12",large="8")
-			+block-image-card(
-				u.lorem(5),
-				"http://google.com",
-				"http://placehold.it/370x120"
-			)=u.lorem(10)
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-	row
-		columns(small="12")
-			+block-image-card(
-				u.lorem(5),
-				"http://google.com",
-				"http://placehold.it/580x200"
-			)=u.lorem(10)
-
-	row
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-		columns(small="12",large="8")
-			+block-image-card(
-				u.lorem(5),
-				"http://google.com",
-				"http://placehold.it/370x120"
-			)=u.lorem(10)
-
+		columns(large="6")
+			img(src="http://placehold.it/250x50", alt="Reconocimientos")
+			
+			+wine-card({
+				score: '94 Pts',
+				name: 'Título de la publicación',
+				url: 'http://google.com',
+				})
+				
+			+wine-card({
+				score: '94 Pts',
+				name: 'Título de la publicación'
+				})
+				
+			+wine-card()
+			
+		columns(large="6")
+			img(src="http://placehold.it/250x50", alt="Concha y toro en el mundo")
+			+article-card({
+				title: 'Título de la publicación',
+				url: 'http://google.com',
+				img: 'http://placehold.it/404x100',
+				btnLink: true
+				})=u.lorem(5)
+			row.collapse
+				columns(large="6")
+					+article-card({
+						title: 'Título de la publicación',
+						url: 'http://google.com',
+						btnLink: true
+						})=u.lorem(5)
+						
+					+article-card({
+						title: 'Título de la publicación',
+						url: 'http://google.com',
+						img: 'http://placehold.it/404x100',
+						btnLink: true
+						})
+						
+					+article-card({
+						title: 'Título de la publicación',
+						url: 'http://google.com',
+						btnLink: true
+						})=u.lorem(5)
+				
+				columns(large="6")
+					+article-card({
+						title: 'Título de la publicación',
+						url: 'http://google.com',
+						img: 'http://placehold.it/404x100',
+						btnLink: true
+						})
 
 	row
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)
-
-
-	row
-		columns(small="12",large="8")
-			+block-image-card(
-				u.lorem(5),
-				"http://google.com",
-				"http://placehold.it/370x120"
-			)=u.lorem(10)
-		columns(small="12",large="4")
-			+block-image-card(
-				u.lorem(2),
-				"http://google.com",
-				"http://placehold.it/180x120"
-			).orange=u.lorem(6)	
-
+		columns(large="12")
+			+article-card({
+				title: 'Nombre',
+				url: 'http://google.com',
+				img: 'http://placehold.it/666x200',
+				btnLink: true
+				})=u.lorem(10)
+				
 	+footer.footer
 		p Lorem ipsum dolor sit amet
-
-

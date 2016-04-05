@@ -31,11 +31,28 @@ $header-bg-color: #1C1C1C;
 
 // Styles
 
+body {
+	color: $brand-primary;
+}
+
+a {
+	color: $brand-secondary !important;
+	&:link, &:visited {
+		color: $brand-primary;
+	}
+	&:hover, &:focus {
+		color: darken($brand-secondary, 5%);
+	}
+}
 p, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 img {
 	width: 100%;
+}
+h3 {
+	font-size: 16px;
+	font-weight: bold;
 }
 td.callout-inner {
 	@extend th.callout-inner;
@@ -59,23 +76,32 @@ td.callout-inner {
 	}
 }
 .header-bar {
-	height: $header-height;
 	background: $header-bg-color;
 	.columns {
 		vertical-align: middle;
 		height: $header-height;
 	}
-	.header-title {
-		margin-bottom: 0;
-		font-size: 24px;
-		line-height: 1.1;
-		color: $primary-color;
-	}
-	.header-date {
-		margin-bottom: 0;
-		font-size: 14px;
-		font-weight: 300;
-		line-height: 1.1;
-		color: $primary-color;
-	}
+}
+.header-title {
+	margin-bottom: 0;
+	font-size: 24px;
+	line-height: 1.1;
+	color: $primary-color;
+}
+.header-date {
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.1;
+	color: $primary-color;
+}
+.header-logo {
+	width: auto;
+	height: 100%;
+}
+.card-block {
+	background: #ddd;
+	border: 1px solid #333;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

@@ -1,15 +1,73 @@
+- var defaultName = 'Concha y Toro';
+- var defaultUrl = 'http://www.conchaytoro.cl';
 
-mixin header
-	row.collapsed
-		columns(small="12")
-			h1.text-center Email Header
 
+//- ****************************
+//- 					Layout
+//- ****************************
+
+//- Header
+mixin header(title, date, img)
+	row.header-bar
+		columns(small="12", large="6")
+			img.header-logo.text-left(src=img, alt=projectName)
+		columns(small="12", large="6")
+			h3.header-title.text-right=title
+			p.header-date.text-right=date
+
+//- Footer
 mixin footer
-	row.collapsed.body-footer
+	row.body-footer
 		columns(small="12")
 			p Footer
+			
+//- ****************************
+//- 					Cards
+//- ****************************
 
+//- Full width block with image
+mixin block-card(args)
+	if args
+		div.card-block&attributes(attributes)
+			row.collapse(style="vertical-align: middle;")
+				columns(large="6")
+					if args.img
+						img(src=args.img, alt=args.title ? args.title : defaultName)
+				columns(large="6")
+					if args.title 
+						a(href=args.url ? args.url : defaultUrl)=args.title
+					p
+						block
+					if args.btnLink && args.url
+						a(href=args.url) Ver más
 
+//- Article card with variations
+mixin article-card(args)
+	if args
+		div.card-block&attributes(attributes)
+			if args.img
+				img(src=args.img, alt=args.title)
+			if args.title 
+				a(href=args.url ? args.url : defaultUrl)=args.title
+			p
+				block
+			if args.btnLink && args.url
+				div.card-block-footer
+				a(href=args.url) Ver más
+	else
+		p Bloque no declarado
+
+//- Wine card
+mixin wine-card(args)
+	if args
+		div.card-block&attributes(attributes)
+			if args.score
+				p=args.score
+			if args.name 
+				a(href=args.url ? args.url : defaultUrl)=args.name
+	else
+		p Bloque no declarado
+			
 mixin block-image-card(title,url,img)
 	div.image-card&attributes(attributes)
 		img(src=img, alt=title)
